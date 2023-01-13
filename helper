@@ -1,0 +1,4 @@
+pip install pyngrok
+ngrok http 8000
+ngrok config add-authtoken TOKEN
+нужно загенерировать токен в ngrok.io

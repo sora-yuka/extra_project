@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 from decouple import config
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok.io']
 
 
 # Application definition
@@ -153,3 +154,104 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    
+    'formatters': {
+        'main_formatters': {
+            'format': '{asctime} - {levelname} - {filename} - {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_formatters',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'information.log',
+            'formatter': 'main_formatters',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        '': {
+            'level': 'ERROR', 
+            'handlers': ['console', 'file']
+        },
+        'product': {
+            'level': 'INFO',
+            'handlers': ['console', 'file'],
+            'propagate': False,
+        }
+    }
+}
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+    
+#     'formatters': {
+#         'main_formatters': {
+#             'format': '{asctime} - {levelname} - {filename} - {message}',
+#             'style': '{',
+#         },
+#         'json_formatters': {
+#             '()': CustomJsonFormatter,
+#         }
+#     },
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'main_formatters',
+#         },
+#         'file': {
+#             'class': 'logging.FileHandler',
+#             'formatter': 'json_formatters',
+#             'filename': 'information.log'
+#         }
+#     },
+#     'root': {
+#         'handlers': ['console'],
+#         'level': 'WARNING',
+#     },
+#     'loggers': {
+#         'ACCOUNT': {
+#             'handlers': ['console', 'file'],
+#             'level': 'INFO',
+#             'propagate': False,
+#         },
+#         'PRODUCT': {
+#             'handlers': ['console', 'file'],
+#             'level': 'INFO',
+#             'propagate': False,
+#         },
+#         'FAVORITE': {
+#             'handlers': ['console', 'file'],
+#             'level': 'INFO',
+#             'propagate': False,    
+#         },
+#         'ORDER': {
+#             'handlers': ['console', 'file'],
+#             'level': 'INFO',
+#             'propagate': False,
+#         },
+#         'LIKE': {
+#             'handlers': ['console', 'file'],
+#             'level': 'INFO',
+#             'propagate': False,
+#         },
+#         'COMMENT': {
+#             'handlers': ['console', 'file'],
+#             'level': 'INFO',
+#             'propagate': False,
+#         }
+#     },
+# }
+# print(LOGGING)

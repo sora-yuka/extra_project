@@ -5,6 +5,9 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from product.serializers import ProductSerializer, CategorySerializer
 from rest_framework.decorators import api_view
+import logging
+
+logger = logging.getLogger('product')
 
 
 class CategoryAPIView(ModelViewSet):
