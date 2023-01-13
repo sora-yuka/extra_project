@@ -176,10 +176,6 @@ LOGGING = {
             'formatter': 'main_formatters',
         },
     },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
     'loggers': {
         '': {
             'level': 'ERROR', 
@@ -193,65 +189,10 @@ LOGGING = {
     }
 }
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-    
-#     'formatters': {
-#         'main_formatters': {
-#             'format': '{asctime} - {levelname} - {filename} - {message}',
-#             'style': '{',
-#         },
-#         'json_formatters': {
-#             '()': CustomJsonFormatter,
-#         }
-#     },
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#             'formatter': 'main_formatters',
-#         },
-#         'file': {
-#             'class': 'logging.FileHandler',
-#             'formatter': 'json_formatters',
-#             'filename': 'information.log'
-#         }
-#     },
-#     'root': {
-#         'handlers': ['console'],
-#         'level': 'WARNING',
-#     },
-#     'loggers': {
-#         'ACCOUNT': {
-#             'handlers': ['console', 'file'],
-#             'level': 'INFO',
-#             'propagate': False,
-#         },
-#         'PRODUCT': {
-#             'handlers': ['console', 'file'],
-#             'level': 'INFO',
-#             'propagate': False,
-#         },
-#         'FAVORITE': {
-#             'handlers': ['console', 'file'],
-#             'level': 'INFO',
-#             'propagate': False,    
-#         },
-#         'ORDER': {
-#             'handlers': ['console', 'file'],
-#             'level': 'INFO',
-#             'propagate': False,
-#         },
-#         'LIKE': {
-#             'handlers': ['console', 'file'],
-#             'level': 'INFO',
-#             'propagate': False,
-#         },
-#         'COMMENT': {
-#             'handlers': ['console', 'file'],
-#             'level': 'INFO',
-#             'propagate': False,
-#         }
-#     },
-# }
-# print(LOGGING)
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD') 
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
