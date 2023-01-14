@@ -5,7 +5,9 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from product.serializers import ProductSerializer, CategorySerializer
 from rest_framework.decorators import api_view
+from django.views.generic import ListView
 import logging
+
 
 logger = logging.getLogger('product')
 
@@ -27,3 +29,8 @@ class ProductAPIView(ModelViewSet):
 # def get_example(request):
     # print(request.hello)
     # return Response("Example")
+    
+class ProductTemplateList(ListView):
+    model = Product
+    template_name = "product_list.html"
+    context_object_name = "products"

@@ -155,39 +155,39 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000"
 ]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
     
-    'formatters': {
-        'main_formatters': {
-            'format': '{asctime} - {levelname} - {filename} - {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'main_formatters',
-        },
-        'file': {
-            'class': 'logging.FileHandler',
-            'filename': 'information.log',
-            'formatter': 'main_formatters',
-        },
-    },
-    'loggers': {
-        '': {
-            'level': 'ERROR', 
-            'handlers': ['console', 'file']
-        },
-        'product': {
-            'level': 'INFO',
-            'handlers': ['console', 'file'],
-            'propagate': False,
-        }
-    }
-}
+#     'formatters': {
+#         'main_formatters': {
+#             'format': '{asctime} - {levelname} - {filename} - {message}',
+#             'style': '{',
+#         },
+#     },
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'main_formatters',
+#         },
+#         'file': {
+#             'class': 'logging.FileHandler',
+#             'filename': 'information.log',
+#             'formatter': 'main_formatters',
+#         },
+#     },
+#     'loggers': {
+#         '': {
+#             'level': 'ERROR', 
+#             'handlers': ['console', 'file']
+#         },
+#         'product': {
+#             'level': 'INFO',
+#             'handlers': ['console', 'file'],
+#             'propagate': False,
+#         }
+#     }
+# }
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
